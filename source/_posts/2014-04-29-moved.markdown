@@ -1,0 +1,9 @@
+---
+layout: post
+title: "引っ越してきました"
+date: 2014-04-29 18:35:49 +0900
+comments: true
+categories: 
+---
+
+以前の記事はこちら: http://d.hatena.ne.jp/gnarl
