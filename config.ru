@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'sinatra/base'
+require 'yaml'
 
 # The project root directory
 $root = ::File.dirname(__FILE__)
@@ -15,7 +16,10 @@ class SinatraStaticServer < Sinatra::Base
   end
 
   def send_sinatra_file(path, &missing_file_block)
-    file_path = File.join(File.dirname(__FILE__), 'public',  path)
+    config = YAML.load(File.read(File.join(File.dirname(__FILE__), "_config.yml")))
+    root = config['root']
+    local_path = path.sub(/^#{Regexp.escape(root)}/, "")
+    file_path = File.join(File.dirname(__FILE__), 'public',  local_path)
     file_path = File.join(file_path, 'index.html') unless file_path =~ /\.[a-z]+$/i
     File.exist?(file_path) ? send_file(file_path) : missing_file_block.call
   end
