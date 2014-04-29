@@ -75,7 +75,8 @@ body > header {
   font-size: 130%;
   text-shadow: 1px 1px 1px #DDDDDD;
   h1 {
-    display: inline-block;
+    display: block;
+    width: 100%;
     margin: 0;
     a:hover {
       color: $subtitle_color;

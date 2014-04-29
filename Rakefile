@@ -402,3 +402,11 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
+
+# from http://rcmdnk.github.io/blog/2014/02/27/blog-octopress/
+desc "Update stylesheets with nested style"
+task :css_nested do
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  puts "## Update stylesheets"
+  system "compass compile -s nested --css-dir #{source_dir}/stylesheets"
+end
