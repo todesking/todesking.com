@@ -64,6 +64,9 @@ default_asides:
 #   3rd Party Settings    #
 # ----------------------- #
 
+# hateb
+hateb_button: true
+
 # Github repositories
 github_user: todesking
 github_repo_count: 5
