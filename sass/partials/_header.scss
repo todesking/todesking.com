@@ -6,6 +6,7 @@ body > header {
     a, a:visited, a:hover {
       color: $title_color;
       text-decoration: none;
+      border: none
     }
   }
   h2 {
