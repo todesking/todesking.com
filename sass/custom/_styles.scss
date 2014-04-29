@@ -130,7 +130,8 @@ body > header, body > nav, body > footer, body #content > article, body #content
 }
 
 a {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px dotted #777;
 }
 
 a, a:hover, a:visited {
