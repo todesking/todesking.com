@@ -2,12 +2,14 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://todesking.com/blog/
+url: http://www.todesking.com/blog/
 title: TODESKING
 subtitle: <marquee>技術ブログ</marquee>
 author: todesking
 simple_search: https://www.google.com/search
 description:
+
+root_url: http://www.todesking.com/blog
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
