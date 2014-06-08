@@ -18,7 +18,7 @@ categories:
 >
 > <cite>[java.net.URL#equals()](http://docs.oracle.com/javase/jp/7/api/java/net/URL.html#equals\(\))</cite>
 
-もちろん等価性を判断する`hashCode()`などのこの影響を受けるので、うっかりコレクションに`URL`を格納すると大量の名前解決が発生して死ぬほど遅くなる。
+もちろん等価性に依存する`hashCode()`などのこの影響を受けるので、うっかりコレクションに`URL`を格納すると大量の名前解決が発生して死ぬほど遅くなる。
 
 ## 代替案:`java.net.URI`を使う
 
