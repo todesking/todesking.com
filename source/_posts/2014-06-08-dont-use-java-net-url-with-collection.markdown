@@ -6,6 +6,10 @@ comments: true
 categories: 
 ---
 
+参照: http://stackoverflow.com/questions/2348399/why-does-java-net-urls-hashcode-resolve-the-host-to-an-ip
+
+公式ドキュメントによると:
+
 > public boolean equals(Object obj)
 >
 > ...
