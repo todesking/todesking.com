@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-github.ioにプライベートリポジトリ作ってそこにアップロードするというのをやってみた。
+github.ioにプライベートなmvnリポジトリ作ってそこにアップロードするというのをやってみた。
 
 ```scala
 // build.sbt
