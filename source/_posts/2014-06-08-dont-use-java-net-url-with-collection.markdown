@@ -33,3 +33,6 @@ categories:
 よくある日本語文字列がそのまま入ったURLなどもアウトなので、事前に`java.net.URLEncoder`などを使ってダメな文字をエスケープする必要があります。
 
 
+## 別の代替案:`URLStreamHandler`を明示的に指定して`URL`を構築する
+
+ホスト比較時の動作は`URLStreamHandler`を使ってるようなので、名前解決しない実装を作成して`URL(String protocol, String host, int port, String file, URLStreamHandler handler)`等のコンストラクタに明示的に渡すようにすれば良いと思われます(未確認)。こっちのほうが影響範囲は少なそう。
