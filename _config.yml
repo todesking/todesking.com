@@ -11,6 +11,8 @@ description:
 
 root_url: http://www.todesking.com/blog
 
+post_history_url: 'https://github.com/todesking/todesking.com/commits/master/source/_posts/'
+
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
