@@ -1,0 +1,1 @@
+../vendor/octopress-post-revision/plugins/revision.rb

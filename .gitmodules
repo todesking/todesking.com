@@ -1,0 +1,3 @@
+[submodule "vendor/octopress-post-revision"]
+	path = vendor/octopress-post-revision
+	url = https://github.com/jhshi/octopress-post-revision
