@@ -22,3 +22,8 @@ group_by(&:itself)
 group_by(&1)
 ```
 itselfなげえ……
+
+
+ちなみになぜ`&1`かというと、
+<a href="http://commons.wikimedia.org/wiki/File:Lead_Photo_For_Category_(mathematics)0-41319275833666325.png#mediaviewer/File:Lead_Photo_For_Category_(mathematics)0-41319275833666325.png">圏論ではidentityを表現するのに`1`を使う風習があって</a>
+かっこよかったからです
