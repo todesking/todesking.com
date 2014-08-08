@@ -4,7 +4,7 @@
 
 url: http://www.todesking.com/blog/
 title: TODESKING
-subtitle: <marquee>技術ブログ</marquee>
+subtitle: <marquee onclick="javascript:document.head.appendChild((function(){var s=document.createElement('link');s.rel='stylesheet';s.href='/blog/stylesheets/youpy.css';return s})())">技術ブログ</marquee>
 author: todesking
 simple_search: https://www.google.com/search
 description:
