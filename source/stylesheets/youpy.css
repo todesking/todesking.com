@@ -1,0 +1,26 @@
+/* new youpy.css from http://d.hatena.ne.jp/taizooo/20120216/1329322980 */
+* {
+  -moz-transition: all 10s; 
+  -webkit-transition: all 10s;  
+  -ms-transition: all 10s;  
+  -o-transition: all 10s;  
+  transition: all 10s;  
+  border-radius:0;
+}
+
+*:hover {
+  border-radius:50px;
+  width:50px;
+  height:50px;
+  background:#f0f;
+  position:absolute;
+  top:0;
+  left:0;
+  -moz-transition: all 10s; 
+  -webkit-transition: all 10s;  
+  -ms-transition: all 10s;  
+  -o-transition: all 10s;  
+  transition: all 10s;  
+  font-size: 3000px !important;
+  border: 100px dotted #0f0;
+}
