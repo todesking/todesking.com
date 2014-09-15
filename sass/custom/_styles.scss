@@ -157,3 +157,18 @@ aside.sidebar {
     border-bottom: 0;
   }
 }
+
+table {
+	th {
+		color: #333;
+		background-color: #eee;
+		border: 1px solid #b9b9b9;
+		padding: 2px 4px;
+	}
+	td {
+		padding: 2px 4px;
+		background-color: #fff;
+		border: 1px solid #b9b9b9;
+	}
+	margin-bottom: 1em;
+}
