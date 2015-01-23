@@ -19,11 +19,11 @@ KeyNoteでスライド作ってると、シンタクスハイライトしたコ�
 " 選択領域(またはファイル全体)のハイライトをHTML化→rtf化してクリップボードにコピーするコマンド
 command! -nargs=0 -range=% CopyHtml call s:copy_html()
 
-function! s:copy_html() abort " {{{
+function! s:copy_html() abort
 	'<,'>TOhtml
 	w !textutil -format html -convert rtf -stdin -stdout | pbcopy
 	bdelete!
-endfunction " }}}
+endfunction
 ```
 
 便利！！！！！！！！！！！！！！！！！！！！！！！(以上です)
