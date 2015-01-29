@@ -13,7 +13,19 @@ categories:
 
 [Giter8](https://github.com/n8han/giter8)というプロジェクトテンプレート管理システム用に[Conscriptプロジェクトのテンプレート](https://github.com/n8han/conscript.g8)が提供されてるので、新規プロジェクトの時はこれ使うと良さそう。
 
+## Conscriptは何をしているのか
+
+* GitHub上の`launchconfig`を元に、`sbt-launcher`のラッパーコマンドを作成する
+* `sbt-launcher`は、`launchconfig`の内容に応じて依存ライブラリの解決とアプリケーションの起動を行う
+
+最初勘違いしてたんだけど、GitHubからソース一式落としてきてビルドしてるわけじゃないです。`launchconfig`以外はmvnリポジトリ経由で取得しているので、ビルド済みのjarを公開しておかないとインストールできない。
+
+`launchconfig`の書き方などが知りたいときは[sbt-launcherのドキュメント](http://www.scala-sbt.org/0.13/docs/Launcher-Configuration.html)読むと書いてあります。
+
+
 ## 既存プロジェクトに導入する場合
+
+### `launchconfig`
 
 まず`src/main/conscript/(実行ファイル名)/launchconfig` に設定を書く
 
@@ -29,16 +41,38 @@ categories:
   local
   scala-tools-releases
   maven-central
+  todesking: http://todesking.github.io/mvn/
 ```
 
-versionとかの指定がbuild.sbtと重複するのでだるい。このファイル自動生成するようにしたい。
-
-`[repositories]`に何書けばいいのかはよくわからんけど初期状態で動いたんでまあいいや(雑)
-
-
+インストール時は`[repositories]`の定義を元に依存ライブラリ(アプリ本体含む)を探すので、必要な物を書いておく。
 `[app] class:`には起動用のクラスを指定する。`xsbti.AppMain`を継承している必要がある。
 
-テンプレートを参照にして以下のように。
+
+sbtと定義内容がかぶってるので、自動生成するようにしてみた。`version`は「現在mvnリポジトリから入手可能なバージョン」である必要があるので微妙なことをしている……。
+
+```scala
+// build.sbt
+compile <<= (compile in Compile) dependsOn Def.task {
+    val content = s"""[app]
+      |  version: ${version.value.replaceAll("\\+$", "")}
+      |  org: ${organization.value}
+      |  name: ${name.value}
+      |  class: com.todesking.nyandoc.Main
+      |[scala]
+      |  version: ${scalaVersion.value}
+      |[repositories]
+      |  local
+      |  scala-tools-releases
+      |  maven-central
+      |  todesking: http://todesking.github.io/mvn/""".stripMargin
+    val dir = (sourceDirectory in Compile).value / "conscript" / "nyandoc"
+    dir.mkdirs()
+    val launchconfig = dir / "launchconfig"
+    IO.write(launchconfig, content)
+  }
+```
+
+### AppMain
 
 ```scala
 package com.todesking.example
@@ -63,6 +97,8 @@ object Main {
 }
 ```
 
+### sbt plugin
+
 Conscript sbt plugin を指定することで、依存関係とか設定してくれるっぽい。
 
 ```scala
@@ -75,11 +111,12 @@ addSbtPlugin("net.databinder" % "conscript-plugin" % "0.3.5")
 seq(conscriptSettings :_*)
 ```
 
+### publish設定
 
-このような設定してGitHubにpushすると、
+自前のリポジトリでjarをホスティングするためのpublish設定の例。
+この設定で`sbt publish`すると`./repo/`以下に必要なファイル一式が出力されるので、適当なサーバに公開するとよい。
 
+```scala
+// build.sbt
+publishTo := Some(Resolver.file("com.todesking", file("./repo/"))(Patterns(true, Resolver.mavenStyleBasePattern)))
 ```
-cs github_user_name/repo_name
-```
-
-でインストール可能になるのですごい。
