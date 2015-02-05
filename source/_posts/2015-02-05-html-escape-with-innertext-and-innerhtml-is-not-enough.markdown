@@ -16,7 +16,7 @@ function escape(content) { return $('<div />').text(content).html() }
 テキストとして解釈してHTMLとして読み出せば確かに安全だ、これはいける！！！！！１１１ と思ってこういうことをすると
 
 ```javascript
-container.innerHTML = '<a href="' + escape(user_input) + '">CLICK HERE THIS IS SAFE I PROMISE</a>'
+container.innerHTML = '<a href="/path/to/some_content/' + escape(user_input) + '">CLICK HERE THIS IS SAFE I PROMISE</a>'
 ```
 
 こういう入力が来て、インターネットがめちゃくちゃになってしまうので今すぐ悔い改めてほしい。
