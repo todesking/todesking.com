@@ -35,3 +35,5 @@ categories:
 
 
 以上です。良かったですね。
+
+[5年前にもMicroじゃないUSBで同じことやってたのを思い出した](http://d.hatena.ne.jp/gnarl/20100418/1271519805)
